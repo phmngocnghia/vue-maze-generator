@@ -17,7 +17,7 @@
       </button>
     </div>
 
-    <div id = "appContainer" :style="{width: width+35+'px', height: height+35+'px'}">
+    <div id = "appContainer" :style="{height: height+35+'px'}">
       <canvas id = "appCanvas">
         <b>Required canvas and javascript enabled to work</b>
       </canvas>
@@ -69,11 +69,10 @@ export default {
       this.appCanvasContext.strokeStyle = settings.wallColor;
 
       // Calculate canvas width and height and set it
-      const size = (settings.pathWidth + (settings.wallWidth / 2));
+      const size = (settings.pathWidth + 1);
       this.width = (settings.cols * size);
       this.height = (settings.rows * size);
       const initialNode = Generator.generateInitialNode(this.maze, settings);
-
       this.appCanvas.width = this.width;
       this.appCanvas.height = this.height;
 
