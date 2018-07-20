@@ -11,16 +11,17 @@
       <div>
         <h2>Maze size (cell)</h2>
         <p>Rows &nbsp;
-        <input required type="number" min = "1" max = "200" v-model.number = "settings.rows"></p>
+        <input required type="number" min = "1" max = "15" v-model.number = "settings.rows"></p>
         <p>column
-        <input required type="number" min = "1" max = "200" v-model.number = "settings.cols"></p>
+        <input required type="number" min = "1" max = "15" v-model.number = "settings.cols"></p>
         <h2>Start position: </h2>
         <checkbox-list
-        class="mb"
+        class="mb d-flex"
         :data = "['Top','Bottom', 'Left', 'Right']"
         v-model.number = "settings.startPosition"/>
          <h2>End position: </h2>
         <checkbox-list
+        class="d-flex"
         :data = "['Top','Bottom', 'Left', 'Right']"
         v-model.number = "settings.endPosition"/>
       </div>
@@ -40,7 +41,10 @@
       max = "200"
       v-model.number = "settings.pathWidth"></p>
     </sweet-modal-tab>
-    <button slot = "button" @click = "saveSettings">Save</button>
+    <button slot = "button" @click = "saveSettings" class="py-2">
+      <FontAwesomeIcon icon="save" class="fa-fw" />
+      Save
+    </button>
   </sweet-modal>
 
   <sweet-modal icon="success" title="Congratulation" ref = "saveSettingsSuccessfully">
@@ -95,9 +99,13 @@ export default {
       const arr = [rows, cols, wallWidth];
 
       if (!(rows && cols && wallWidth)) {
-        this.error = 'Dữ liệu không hợp lệ';
+        this.error = 'Invalid config';
       } else if (arr.some(elem => elem < 0)) {
-        this.error = 'Dữ liệu số phải lớn hơn 0';
+        this.error = 'Number must be ';
+      } else if (rows > 15) {
+        this.error = 'Number of row must smaller than 16';
+      } else if (cols > 15) {
+        this.error = 'Number of colunm must be smaller than 16';
       } else {
         // OK
         this.error = false;
@@ -134,6 +142,10 @@ export default {
 </script>
 
 <style scoped>
+.sweet-buttons {
+  padding: 30px 0px
+}
+
 .mb {
   margin-bottom: 20px
 }

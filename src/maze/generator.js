@@ -127,10 +127,10 @@ export default {
     for (let i = 0; i < settings.rows; i += 1) {
       for (let j = 0; j < settings.cols; j += 1) {
         var cell = maze[i][j]
-        cell.NeighBours.Left.cell = maze[i] ? maze[i][j - 1] : null
-        cell.NeighBours.Right.cell = maze[i] ? maze[i][j + 1] : null
-        cell.NeighBours.Top.cell = maze[i - 1] ? maze[i - 1][j] : null
-        cell.NeighBours.Bottom.cell = maze[i + 1] ? maze[i + 1][j] : null
+        cell.NeighBours.Left.cell = maze[i] ? maze[i][j-1] : null
+        cell.NeighBours.Right.cell = maze[i] ? maze[i][j+1] : null
+        cell.NeighBours.Top.cell = maze[i - 1] ? maze[i-1][j] : null
+        cell.NeighBours.Bottom.cell = maze[i + 1] ? maze[i+1][j] : null
       }
     }
 

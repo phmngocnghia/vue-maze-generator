@@ -2,21 +2,18 @@
   <div id="app">
     <Header/>
     <Main/>
-
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
 import store from './store/index';
 
 export default {
   name: 'App',
   components: {
     Main,
-    Footer,
     Header,
   },
   store,

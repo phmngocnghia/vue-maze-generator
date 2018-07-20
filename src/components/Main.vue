@@ -1,12 +1,6 @@
 <template>
   <main>
-    <div id = "appContainer">
-      <canvas id = "appCanvas">
-        <b>Required canvas and javascript enabled to work</b>
-      </canvas>
-    </div>
-
-    <div class = "buttonContainer">
+    <div class = "buttonContainer mr">
       <button @click = "settingsOnClick" :disabled = "isGeneratorRunning">
         Settings
       </button>
@@ -22,6 +16,14 @@
         Export as PNG
       </button>
     </div>
+
+    <div id = "appContainer" :style="{width: width+35+'px', height: height+35+'px'}">
+      <canvas id = "appCanvas">
+        <b>Required canvas and javascript enabled to work</b>
+      </canvas>
+    </div>
+
+
     <Settings ref = "settings"/>
 
     <sweet-modal icon="error" title="Error" ref = "exportError">
@@ -68,12 +70,12 @@ export default {
 
       // Calculate canvas width and height and set it
       const size = (settings.pathWidth + (settings.wallWidth / 2));
-      const width = (settings.cols * size);
-      const height = (settings.rows * size);
+      this.width = (settings.cols * size);
+      this.height = (settings.rows * size);
       const initialNode = Generator.generateInitialNode(this.maze, settings);
 
-      this.appCanvas.width = width;
-      this.appCanvas.height = height;
+      this.appCanvas.width = this.width;
+      this.appCanvas.height = this.height;
 
 
       this.isGeneratorRunning = true;
@@ -210,10 +212,11 @@ export default {
 
   data() {
     return {
-      maze: null,
       destinationCells: [],
       isShowSolution: true,
       isGeneratorRunning: false,
+      width: 300,
+      height: 300
     };
   },
 
@@ -225,6 +228,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.d-flex {
+  display: flex
+}
+.mr {
+  margin-right: 20px
+}
+
 html {
   height: 100%;
 }
@@ -235,16 +245,12 @@ body {
 
 main{
   justify-content: center;
-  display:flex
+  overflow: auto;
 }
 
 #appContainer{
-  margin-right: 20px;
-  border: 1px solid black;
   display: flex;
-  justify-content: flex-start;
-  align-items: baseline;
-  overflow: auto;
+  justify-content: center;
 }
 
 #appCanvas{
@@ -252,7 +258,7 @@ main{
 }
 
 .buttonContainer{
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   min-width: 150px;
 }

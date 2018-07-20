@@ -31,6 +31,11 @@ export default {
 </script>
 
 <style scoped>
+div {
+  display: flex;
+  padding-right: 40px
+}
+
 svg{
   margin-right: 5px
 }

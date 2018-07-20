@@ -1,6 +1,13 @@
-# y
-
 > vue-maze-generator
+
+## Feature
+* Generate maze
+* Configurable options such as :
+    * Path color
+    * Path width
+    * Wall color
+    * Start and end position of maze
+    * Toggle draw soluion
 
 ## Build Setup
 

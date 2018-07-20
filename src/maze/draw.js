@@ -215,7 +215,7 @@ export default {
      context,
      destinationCells[0],
      settings.pathWidth,
-     settings.startPosition
+     settings.endPosition
    )
 
     /**
@@ -227,7 +227,7 @@ export default {
     context,
     destinationCells[destinationCells.length-1],
     settings.pathWidth,
-    settings.endPosition
+    settings.startPosition
    )
   },
 
