@@ -26,6 +26,8 @@
 
     <Settings ref = "settings"/>
 
+
+
     <sweet-modal icon="error" title="Error" ref = "exportError">
       No maze has been generated !
     </sweet-modal>
@@ -163,16 +165,18 @@ export default {
       this.isShowSolution = !this.isShowSolution;
 
       // Redraw solution if maze have been create
-      if (this.destinationCells.length > 0) {
+      if (this.isShowSolution) {
+        Draw.drawDestinationLine(this.appCanvasContext, this.settings, this.destinationCells)
+      } else {
         // Clear all canvas
 
 
-        // Draw.drawCells(this.appCanvas,
-        //   this.appCanvasContext,
-        //   this.settings,
-        //   this.destinationCells,
-        //   this.isShowSolution,
-        //   this.isGeneratorRunning);
+        Draw.drawCells(this.appCanvas,
+          this.appCanvasContext,
+          this.settings,
+          this.destinationCells,
+          this.isShowSolution,
+          this.isGeneratorRunning);
       }
     },
 
@@ -217,6 +221,10 @@ export default {
       width: 300,
       height: 300
     };
+  },
+
+  mounted() {
+    this.generateMazeOnClick()
   },
 
   components: {

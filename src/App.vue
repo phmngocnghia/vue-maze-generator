@@ -29,22 +29,23 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 20px;
   letter-spacing: 1px;
+  font-family: 'Muli', cursive !important;
 }
 
 a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 button {
   padding: 10px 20px;
   border: 0;
   border-radius: 3px;
+  font-family: 'Muli', cursive !important
 }
 </style>
