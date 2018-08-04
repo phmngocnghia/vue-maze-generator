@@ -68,8 +68,8 @@ export default {
        */
 
       settings: {
-        rows: 10,
-        cols: 10,
+        rows: 15,
+        cols: 15,
         startPosition: 'Top',
         endPosition: 'Bottom',
         solutionColor: '#039BE5',
@@ -98,7 +98,8 @@ export default {
 
       const arr = [rows, cols, wallWidth];
 
-      if (!(rows && cols && wallWidth)) {
+      debugger // eslint-disable-line
+      if (!(rows && cols)) {
         this.error = 'Invalid config';
       } else if (arr.some(elem => elem < 0)) {
         this.error = 'Number must be ';
